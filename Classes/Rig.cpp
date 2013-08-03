@@ -8,7 +8,11 @@
 
 #include "Rig.h"
 #include "Global.h"
-#include <triangulate.h>
+#include "triangulate.h"
+
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+#include <stdlib.h>
+#endif
 
 #define calculate_determinant_2x2(x1,y1,x2,y2) x1*y2-y1*x2
 #define calculate_determinant_2x3(x1,y1,x2,y2,x3,y3) x1*y2+x2*y3+x3*y1-y1*x2-y2*x3-y3*x1
@@ -19,6 +23,7 @@ float g_rigMaxRadius = 0.f;
 int g_rigVertexes = 3;
 int g_rigCut = 1;
 
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
 struct PositionSort
 {
 public:
@@ -31,6 +36,28 @@ public:
 private:
     CCPoint m_startPosition;
 };
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+CCPoint g_startPosition = CCPointZero;
+
+int PositionQSORT(const void * a, const void * b)
+{
+    CCPoint first = *(CCPoint*)a;
+    CCPoint second = *(CCPoint*)b;
+    
+    return ( ccpDistanceSQ(first, g_startPosition) - ccpDistanceSQ(second, g_startPosition) );
+}
+#endif
+
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+int AngleQSORT(const void * a, const void * b)
+{
+    float first = *(float*)a;
+    float second = *(float*)b;
+    
+    return ( first - second );
+}
+#endif
+
 
 struct HorizontalSort
 {
@@ -132,7 +159,12 @@ void RigRandom(Rig& targetRig, int vertexes)
         //angles.push_back(angleIter * (angleSize + CCRANDOM_0_1()));
         angles.push_back(GetRandomAngle());
     }
+    
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     std::sort(angles.begin(), angles.end());
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    qsort(angles.begin(), angles.size(), sizeof(float), AngleQSORT);
+#endif
     
     //Iterate over the angles, create a vertexes stack.
     targetRig.reserve(vertexNum);
@@ -181,7 +213,12 @@ bool RigSplit(const CCPoint& startPoint, const CCPoint& endPoint, const Rig& ori
         lastVert = originalRig[i];
     }
     
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     std::sort(intersections.begin(), intersections.end(), PositionSort(startPoint));
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    g_startPosition = startPoint;
+    qsort(intersections.begin(), intersections.size(), sizeof(CCPoint), PositionQSORT);
+#endif
     
     //Check if the split line is valid.
     if(intersections.size() < 2)

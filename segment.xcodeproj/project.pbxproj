@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D3E40E817ACB94A00B1FA9A /* triangulate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D3E40E617ACB94A00B1FA9A /* triangulate.cpp */; };
 		0D58200D17A3C65A00D6A302 /* SettingsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D58200B17A3C65A00D6A302 /* SettingsScene.cpp */; };
 		0D84F6CA179A9A9000CF3225 /* RippleNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D84F6C8179A9A9000CF3225 /* RippleNode.cpp */; };
 		0D9FA553178D92DF0087BFF5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9FA552178D92DF0087BFF5 /* QuartzCore.framework */; };
@@ -289,7 +290,6 @@
 		0D9FA932178D93680087BFF5 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9FA924178D93680087BFF5 /* Icon@2x.png */; };
 		0D9FA933178D93680087BFF5 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 0D9FA925178D93680087BFF5 /* iTunesArtwork */; };
 		0D9FA934178D93680087BFF5 /* Offside-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D9FA926178D93680087BFF5 /* Offside-Regular.ttf */; };
-		0D9FA939178D93900087BFF5 /* triangulate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9FA937178D93900087BFF5 /* triangulate.cpp */; };
 		0DD1C11A179048280070FA4B /* Global.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DD1C118179048280070FA4B /* Global.cpp */; };
 		0DEABA5517A2C4A30050AC0A /* HD in Resources */ = {isa = PBXBuildFile; fileRef = 0DEABA5217A2C4A30050AC0A /* HD */; };
 		0DEABA5617A2C4A30050AC0A /* HDR in Resources */ = {isa = PBXBuildFile; fileRef = 0DEABA5317A2C4A30050AC0A /* HDR */; };
@@ -301,6 +301,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D3E40E617ACB94A00B1FA9A /* triangulate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = triangulate.cpp; path = Classes/triangulate.cpp; sourceTree = SOURCE_ROOT; };
+		0D3E40E717ACB94A00B1FA9A /* triangulate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = triangulate.h; path = Classes/triangulate.h; sourceTree = SOURCE_ROOT; };
 		0D58200B17A3C65A00D6A302 /* SettingsScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SettingsScene.cpp; path = Classes/SettingsScene.cpp; sourceTree = "<group>"; };
 		0D58200C17A3C65A00D6A302 /* SettingsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsScene.h; path = Classes/SettingsScene.h; sourceTree = "<group>"; };
 		0D84F6C8179A9A9000CF3225 /* RippleNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RippleNode.cpp; path = Classes/RippleNode.cpp; sourceTree = "<group>"; };
@@ -907,10 +909,8 @@
 		0D9FA922178D93680087BFF5 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "Resources/Icon-Small@2x.png"; sourceTree = "<group>"; };
 		0D9FA923178D93680087BFF5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Icon.png; sourceTree = "<group>"; };
 		0D9FA924178D93680087BFF5 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Resources/Icon@2x.png"; sourceTree = "<group>"; };
-		0D9FA925178D93680087BFF5 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Resources/iTunesArtwork; sourceTree = "<group>"; };
+		0D9FA925178D93680087BFF5 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = text; name = iTunesArtwork; path = Resources/iTunesArtwork; sourceTree = "<group>"; };
 		0D9FA926178D93680087BFF5 /* Offside-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Offside-Regular.ttf"; path = "Resources/Offside-Regular.ttf"; sourceTree = "<group>"; };
-		0D9FA937178D93900087BFF5 /* triangulate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = triangulate.cpp; sourceTree = "<group>"; };
-		0D9FA938178D93900087BFF5 /* triangulate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangulate.h; sourceTree = "<group>"; };
 		0DD1C118179048280070FA4B /* Global.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Global.cpp; path = Classes/Global.cpp; sourceTree = "<group>"; };
 		0DD1C119179048280070FA4B /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Global.h; path = Classes/Global.h; sourceTree = "<group>"; };
 		0DEABA5217A2C4A30050AC0A /* HD */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HD; path = art/Export/HD; sourceTree = SOURCE_ROOT; };
@@ -947,6 +947,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D3E40E517ACB93800B1FA9A /* Triangulate */ = {
+			isa = PBXGroup;
+			children = (
+				0D3E40E617ACB94A00B1FA9A /* triangulate.cpp */,
+				0D3E40E717ACB94A00B1FA9A /* triangulate.h */,
+			);
+			name = Triangulate;
+			sourceTree = "<group>";
+		};
 		0D9FA546178D92DF0087BFF5 = {
 			isa = PBXGroup;
 			children = (
@@ -988,8 +997,9 @@
 				0D9FA8F3178D92E40087BFF5 /* Classes */,
 				0D9FA8F1178D92E40087BFF5 /* Supporting Files */,
 			);
-			path = segment;
-			sourceTree = "<group>";
+			name = segment;
+			path = "/Users/iljae/Cocos2D-x/cocos2d-x-2.1.4/segment";
+			sourceTree = "<absolute>";
 		};
 		0D9FA563178D92DF0087BFF5 /* Resources */ = {
 			isa = PBXGroup;
@@ -1029,7 +1039,6 @@
 		0D9FA584178D92E00087BFF5 /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				0D9FA936178D93900087BFF5 /* triangulate */,
 				0D9FA585178D92E00087BFF5 /* cocos2dx */,
 				0D9FA775178D92E30087BFF5 /* CocosDenshion */,
 				0D9FA78D178D92E30087BFF5 /* extensions */,
@@ -2148,6 +2157,7 @@
 		0D9FA8F3178D92E40087BFF5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0D3E40E517ACB93800B1FA9A /* Triangulate */,
 				0DEEF32B178E7CF400E429F3 /* Node */,
 				0DEEF32A178E7CE800E429F3 /* Layer */,
 				0DEEF329178E7CE100E429F3 /* Scene */,
@@ -2159,16 +2169,6 @@
 				0DD1C119179048280070FA4B /* Global.h */,
 			);
 			name = Classes;
-			sourceTree = "<group>";
-		};
-		0D9FA936178D93900087BFF5 /* triangulate */ = {
-			isa = PBXGroup;
-			children = (
-				0D9FA937178D93900087BFF5 /* triangulate.cpp */,
-				0D9FA938178D93900087BFF5 /* triangulate.h */,
-			);
-			name = triangulate;
-			path = libs/triangulate;
 			sourceTree = "<group>";
 		};
 		0DEEF329178E7CE100E429F3 /* Scene */ = {
@@ -2549,13 +2549,13 @@
 				0D9FA917178D93360087BFF5 /* PolygonNode.cpp in Sources */,
 				0D9FA918178D93360087BFF5 /* Rig.cpp in Sources */,
 				0D9FA919178D93360087BFF5 /* TimerNode.cpp in Sources */,
-				0D9FA939178D93900087BFF5 /* triangulate.cpp in Sources */,
 				0DEEF32E178E7D0E00E429F3 /* ScoreScene.cpp in Sources */,
 				0DEEF337178E9C5900E429F3 /* LoseScene.cpp in Sources */,
 				0DD1C11A179048280070FA4B /* Global.cpp in Sources */,
 				0DFE21781798224700E8DA3F /* HudLayer.cpp in Sources */,
 				0D84F6CA179A9A9000CF3225 /* RippleNode.cpp in Sources */,
 				0D58200D17A3C65A00D6A302 /* SettingsScene.cpp in Sources */,
+				0D3E40E817ACB94A00B1FA9A /* triangulate.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2635,14 +2635,23 @@
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = segment/Prefix.pch;
+				GCC_PREFIX_HEADER = Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
-				INFOPLIST_FILE = segment/Resources/Info.plist;
+				HEADER_SEARCH_PATHS = (
+					"\"libs/cocos2dx/kazmath/include\"",
+					"\"libs/cocos2dx\"",
+					"\"libs/CocosDenshion/include\"",
+					"\"libs/extensions\"",
+					"\"libs/cocos2dx/include\"",
+					"\"libs/cocos2dx/platform/third_party/ios\"",
+					"\"libs/cocos2dx/platform/ios\"",
+				);
+				INFOPLIST_FILE = Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/segment/libs/cocos2dx/platform/third_party/ios/libraries\"",
-					"\"$(SRCROOT)/segment/libs/libwebsockets/ios/lib\"",
+					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
+					"\"$(SRCROOT)/libs/libwebsockets/ios/lib\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -2651,7 +2660,7 @@
 					"-websockets",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"segment/libs/Chipmunk/include/chipmunk\"";
+				USER_HEADER_SEARCH_PATHS = "\"libs/Chipmunk/include/chipmunk\"";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2666,14 +2675,23 @@
 					"\"$(SRCROOT)/../Documents/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = segment/Prefix.pch;
+				GCC_PREFIX_HEADER = Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
-				INFOPLIST_FILE = segment/Resources/Info.plist;
+				HEADER_SEARCH_PATHS = (
+					"\"libs/cocos2dx/kazmath/include\"",
+					"\"libs/cocos2dx\"",
+					"\"libs/CocosDenshion/include\"",
+					"\"libs/extensions\"",
+					"\"libs/cocos2dx/include\"",
+					"\"libs/cocos2dx/platform/third_party/ios\"",
+					"\"libs/cocos2dx/platform/ios\"",
+				);
+				INFOPLIST_FILE = Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/segment/libs/cocos2dx/platform/third_party/ios/libraries\"",
-					"\"$(SRCROOT)/segment/libs/libwebsockets/ios/lib\"",
+					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
+					"\"$(SRCROOT)/libs/libwebsockets/ios/lib\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -2682,7 +2700,7 @@
 					"-websockets",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"segment/libs/Chipmunk/include/chipmunk\"";
+				USER_HEADER_SEARCH_PATHS = "\"libs/Chipmunk/include/chipmunk\"";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

@@ -1,6 +1,8 @@
 APPNAME="segment"
 NDK_ROOT="/Users/iljae/AndroidNDK/android-ndk-r8e"
 
+sudo bash generateMakeFile.sh
+
 # options
 
 buildexternalsfromsource=
