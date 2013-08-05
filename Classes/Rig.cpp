@@ -163,7 +163,7 @@ void RigRandom(Rig& targetRig, int vertexes)
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     std::sort(angles.begin(), angles.end());
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    qsort(angles.begin(), angles.size(), sizeof(float), AngleQSORT);
+    qsort(&angles[0], angles.size(), sizeof(float), AngleQSORT);
 #endif
     
     //Iterate over the angles, create a vertexes stack.
@@ -217,7 +217,7 @@ bool RigSplit(const CCPoint& startPoint, const CCPoint& endPoint, const Rig& ori
     std::sort(intersections.begin(), intersections.end(), PositionSort(startPoint));
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     g_startPosition = startPoint;
-    qsort(intersections.begin(), intersections.size(), sizeof(CCPoint), PositionQSORT);
+    qsort(&intersections[0], intersections.size(), sizeof(CCPoint), PositionQSORT);
 #endif
     
     //Check if the split line is valid.
