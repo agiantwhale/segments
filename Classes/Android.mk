@@ -13,12 +13,15 @@ GameLayer.cpp \
 GameScene.cpp \
 Global.cpp \
 HudLayer.cpp \
+LoseMenuLayer.cpp \
 LoseScene.cpp \
+MainMenuLayer.cpp \
 MenuScene.cpp \
 PieceNode.cpp \
 PolygonNode.cpp \
 Rig.cpp \
 RippleNode.cpp \
+ScoreMenuLayer.cpp \
 ScoreScene.cpp \
 SettingsScene.cpp \
 TimerNode.cpp \

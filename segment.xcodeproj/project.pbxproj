@@ -291,6 +291,9 @@
 		0D9FA933178D93680087BFF5 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 0D9FA925178D93680087BFF5 /* iTunesArtwork */; };
 		0D9FA934178D93680087BFF5 /* Offside-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D9FA926178D93680087BFF5 /* Offside-Regular.ttf */; };
 		0DD1C11A179048280070FA4B /* Global.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DD1C118179048280070FA4B /* Global.cpp */; };
+		0DE9BF3217B1053B00CD8C86 /* MainMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9BF3017B1053B00CD8C86 /* MainMenuLayer.cpp */; };
+		0DE9BF3817B110B600CD8C86 /* ScoreMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9BF3617B110B600CD8C86 /* ScoreMenuLayer.cpp */; };
+		0DE9BF3B17B1114B00CD8C86 /* LoseMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9BF3917B1114A00CD8C86 /* LoseMenuLayer.cpp */; };
 		0DEABA5517A2C4A30050AC0A /* HD in Resources */ = {isa = PBXBuildFile; fileRef = 0DEABA5217A2C4A30050AC0A /* HD */; };
 		0DEABA5617A2C4A30050AC0A /* HDR in Resources */ = {isa = PBXBuildFile; fileRef = 0DEABA5317A2C4A30050AC0A /* HDR */; };
 		0DEABA5717A2C4A30050AC0A /* SD in Resources */ = {isa = PBXBuildFile; fileRef = 0DEABA5417A2C4A30050AC0A /* SD */; };
@@ -913,6 +916,12 @@
 		0D9FA926178D93680087BFF5 /* Offside-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Offside-Regular.ttf"; path = "Resources/Offside-Regular.ttf"; sourceTree = "<group>"; };
 		0DD1C118179048280070FA4B /* Global.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Global.cpp; path = Classes/Global.cpp; sourceTree = "<group>"; };
 		0DD1C119179048280070FA4B /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Global.h; path = Classes/Global.h; sourceTree = "<group>"; };
+		0DE9BF3017B1053B00CD8C86 /* MainMenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainMenuLayer.cpp; path = Classes/MainMenuLayer.cpp; sourceTree = "<group>"; };
+		0DE9BF3117B1053B00CD8C86 /* MainMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMenuLayer.h; path = Classes/MainMenuLayer.h; sourceTree = "<group>"; };
+		0DE9BF3617B110B600CD8C86 /* ScoreMenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ScoreMenuLayer.cpp; path = Classes/ScoreMenuLayer.cpp; sourceTree = "<group>"; };
+		0DE9BF3717B110B600CD8C86 /* ScoreMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreMenuLayer.h; path = Classes/ScoreMenuLayer.h; sourceTree = "<group>"; };
+		0DE9BF3917B1114A00CD8C86 /* LoseMenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoseMenuLayer.cpp; path = Classes/LoseMenuLayer.cpp; sourceTree = "<group>"; };
+		0DE9BF3A17B1114A00CD8C86 /* LoseMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoseMenuLayer.h; path = Classes/LoseMenuLayer.h; sourceTree = "<group>"; };
 		0DEABA5217A2C4A30050AC0A /* HD */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HD; path = art/Export/HD; sourceTree = SOURCE_ROOT; };
 		0DEABA5317A2C4A30050AC0A /* HDR */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HDR; path = art/Export/HDR; sourceTree = SOURCE_ROOT; };
 		0DEABA5417A2C4A30050AC0A /* SD */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SD; path = art/Export/SD; sourceTree = SOURCE_ROOT; };
@@ -2195,6 +2204,12 @@
 				0D9FA904178D93360087BFF5 /* GameLayer.h */,
 				0DFE21761798224700E8DA3F /* HudLayer.cpp */,
 				0DFE21771798224700E8DA3F /* HudLayer.h */,
+				0DE9BF3017B1053B00CD8C86 /* MainMenuLayer.cpp */,
+				0DE9BF3117B1053B00CD8C86 /* MainMenuLayer.h */,
+				0DE9BF3617B110B600CD8C86 /* ScoreMenuLayer.cpp */,
+				0DE9BF3717B110B600CD8C86 /* ScoreMenuLayer.h */,
+				0DE9BF3917B1114A00CD8C86 /* LoseMenuLayer.cpp */,
+				0DE9BF3A17B1114A00CD8C86 /* LoseMenuLayer.h */,
 			);
 			name = Layer;
 			sourceTree = "<group>";
@@ -2556,6 +2571,9 @@
 				0D84F6CA179A9A9000CF3225 /* RippleNode.cpp in Sources */,
 				0D58200D17A3C65A00D6A302 /* SettingsScene.cpp in Sources */,
 				0D3E40E817ACB94A00B1FA9A /* triangulate.cpp in Sources */,
+				0DE9BF3217B1053B00CD8C86 /* MainMenuLayer.cpp in Sources */,
+				0DE9BF3817B110B600CD8C86 /* ScoreMenuLayer.cpp in Sources */,
+				0DE9BF3B17B1114B00CD8C86 /* LoseMenuLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

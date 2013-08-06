@@ -10,6 +10,7 @@
 #include "ScoreScene.h"
 #include "MenuScene.h"
 #include "GameScene.h"
+#include "MainMenuLayer.h"
 
 MenuScene* MenuScene::create()
 {
@@ -31,7 +32,7 @@ bool MenuScene::init()
     CCLayerColor* backgroundColor = CCLayerColor::create(ccc4(255, 255, 255, 255));
     addChild(backgroundColor);
     
-    CCLayer* menuLayer = CCLayer::create();
+    CCLayer* menuLayer = MainMenuLayer::create();
     addChild(menuLayer);
 
     const CCSize& windowSize = CCDirector::sharedDirector()->getWinSize();

@@ -10,6 +10,7 @@
 #include "GameScene.h"
 #include "MenuScene.h"
 #include "LoseScene.h"
+#include "LoseMenuLayer.h"
 
 LoseScene* LoseScene::create(const ScoreInfo& info)
 {
@@ -38,7 +39,7 @@ bool LoseScene::initWithScore(const ScoreInfo& info)
     CCLayerColor* backgroundColor = CCLayerColor::create(ccc4(255, 255, 255, 255));
     addChild(backgroundColor);
     
-    CCLayer* menuLayer = CCLayer::create();
+    CCLayer* menuLayer = LoseMenuLayer::create();
     addChild(menuLayer);
     
     const CCSize& windowSize = CCDirector::sharedDirector()->getWinSize();
@@ -58,7 +59,7 @@ bool LoseScene::initWithScore(const ScoreInfo& info)
     end->setTarget(this, menu_selector(LoseScene::endCallback));
     menu->addChild(end);
     
-    menu->alignItemsHorizontally();
+    menu->alignItemsHorizontallyWithPadding(20 * SCREEN_SCALE());
     
     menuLayer->addChild(menu);
     

@@ -11,6 +11,7 @@
 #include "MenuScene.h"
 #include "ScoreScene.h"
 #include "PolygonNode.h"
+#include "ScoreMenuLayer.h"
 
 ScoreScene* ScoreScene::create()
 {
@@ -32,7 +33,7 @@ bool ScoreScene::init()
     CCLayerColor* backgroundColor = CCLayerColor::create(ccc4(255, 255, 255, 255));
     addChild(backgroundColor);
     
-    CCLayer* menuLayer = CCLayer::create();
+    CCLayer* menuLayer = ScoreMenuLayer::create();
     addChild(menuLayer);
     
     const CCSize& windowSize = CCDirector::sharedDirector()->getWinSize();
@@ -52,7 +53,7 @@ bool ScoreScene::init()
     back->setTarget(this, menu_selector(ScoreScene::pop));
     menu->addChild(back);
     
-    menu->alignItemsHorizontally();
+    menu->alignItemsHorizontallyWithPadding(20 * SCREEN_SCALE());
     
     menuLayer->addChild(menu);
     
