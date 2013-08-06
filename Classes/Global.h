@@ -61,7 +61,12 @@ extern float g_screenScale;
 #define SCORE_INFO() g_scoreInfo
 #define SCREEN_SCALE() g_screenScale
 
-#define DEFAULT_FONT "AdventPro-Regular"
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    #define DEFAULT_FONT "AdventPro-Regular"
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    #define DEFAULT_FONT "AdventPro-Regular.ttf"
+#endif
+
 #define DEFAULT_LABEL_SIZE 20.f
 
 #endif /* defined(__segment__Global__) */
