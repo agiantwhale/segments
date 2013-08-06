@@ -1,3 +1,5 @@
-bin/
+libs/
 obj/
+bin/
+gen/
 assets/
