@@ -81,11 +81,11 @@ bool AppDelegate::applicationDidFinishLaunching()
     
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     if(screenSize.width >= 720) {
-        g_screenScale = 2.f;
+        g_screenScale = 2.25f;
         searchPaths.insert(searchPaths.begin(),"xlarge");
     }
     else if( screenSize.width >= 480 ) {
-        g_screenScale = 2.f;
+        g_screenScale = 1.5f;
         searchPaths.insert(searchPaths.begin(),"large");
     }
     else if( screenSize.width >= 320 ) {

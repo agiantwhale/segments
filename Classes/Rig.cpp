@@ -46,9 +46,7 @@ int PositionQSORT(const void * a, const void * b)
     
     return ( ccpDistanceSQ(first, g_startPosition) - ccpDistanceSQ(second, g_startPosition) );
 }
-#endif
 
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 int AngleQSORT(const void * a, const void * b)
 {
     float first = *(float*)a;
@@ -57,7 +55,6 @@ int AngleQSORT(const void * a, const void * b)
     return ( first - second );
 }
 #endif
-
 
 struct HorizontalSort
 {
@@ -175,21 +172,11 @@ void RigRandom(Rig& targetRig, int vertexes)
         targetRig.push_back(ccpRotateByAngle(highPoint, CCPointZero, angle));
     }
     
-    //Check for intersections from the last to the first point.
-    //If intersects, just push back origin.
-    CCPoint firstPoint = targetRig[0];
-    CCPoint lastPoint = targetRig[targetRig.size()-1];
-    for(int v = 2; v < (targetRig.size()-1); v++)
+    //If the angle between the first and last angle is less than 180 degrees, pop the last point and push back origin.
+    if(angles.back() - angles.front() < 180)
     {
-        CCPoint edgeStart = targetRig[v-1];
-        CCPoint egdeEnd = targetRig[v];
-        
-        if(ccpSegmentIntersect(firstPoint, lastPoint, edgeStart, egdeEnd))
-        {
-            //targetRig[targetRig.size()-1] = CCPoint();
-            targetRig.push_back(CCPoint());
-            break;
-        }
+        targetRig.pop_back();
+        targetRig.push_back(CCPointZero);
     }
 }
 
