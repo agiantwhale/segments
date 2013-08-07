@@ -8,7 +8,7 @@ LOCAL_MODULE_FILENAME := libgame
 
 LOCAL_SRC_FILES := android/main.cpp
                    
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes                   
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes                     
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos_game_common cocos2dx_static cocosdenshion_static cocos_extension_static
             

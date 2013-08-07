@@ -34,6 +34,8 @@ echo "LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static">> Android.mk
 echo "LOCAL_WHOLE_STATIC_LIBRARIES += cocosdenshion_static">> Android.mk
 echo "LOCAL_WHOLE_STATIC_LIBRARIES += cocos_extension_static">> Android.mk
 echo "">>Android.mk
+echo "LOCAL_C_INCLUDES += \$(LOCAL_PATH)/../libs/rapidjson/include/rapidjson">> Android.mk
+echo "">>Android.mk
 echo "LOCAL_EXPORT_C_INCLUDES := \$(LOCAL_PATH)">> Android.mk
 echo "">>Android.mk
 echo "include \$(BUILD_STATIC_LIBRARY)">> Android.mk

@@ -42,9 +42,6 @@ public:
 
     void resetGame();
     void loseGame();
-    
-private:
-    std::vector<ColorInfo> m_colorInfoStack;
 };
 
 #endif /* defined(__CutGame__GameScene__) */

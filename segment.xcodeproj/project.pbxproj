@@ -10,6 +10,7 @@
 		0D3E40E817ACB94A00B1FA9A /* triangulate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D3E40E617ACB94A00B1FA9A /* triangulate.cpp */; };
 		0D58200D17A3C65A00D6A302 /* SettingsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D58200B17A3C65A00D6A302 /* SettingsScene.cpp */; };
 		0D7AF85A17B24AE300D7FBFA /* RippleNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D7AF85817B24AE300D7FBFA /* RippleNode.cpp */; };
+		0D7AF88017B27ABF00D7FBFA /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D7AF87F17B27ABF00D7FBFA /* colors.json */; };
 		0D9FA553178D92DF0087BFF5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9FA552178D92DF0087BFF5 /* QuartzCore.framework */; };
 		0D9FA555178D92DF0087BFF5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9FA554178D92DF0087BFF5 /* OpenGLES.framework */; };
 		0D9FA557178D92DF0087BFF5 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9FA556178D92DF0087BFF5 /* OpenAL.framework */; };
@@ -309,6 +310,17 @@
 		0D58200C17A3C65A00D6A302 /* SettingsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsScene.h; path = Classes/SettingsScene.h; sourceTree = "<group>"; };
 		0D7AF85817B24AE300D7FBFA /* RippleNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RippleNode.cpp; path = Classes/RippleNode.cpp; sourceTree = "<group>"; };
 		0D7AF85917B24AE300D7FBFA /* RippleNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RippleNode.h; path = Classes/RippleNode.h; sourceTree = "<group>"; };
+		0D7AF87417B2635700D7FBFA /* document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = document.h; sourceTree = "<group>"; };
+		0D7AF87517B2635700D7FBFA /* filestream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filestream.h; sourceTree = "<group>"; };
+		0D7AF87717B2635700D7FBFA /* pow10.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pow10.h; sourceTree = "<group>"; };
+		0D7AF87817B2635700D7FBFA /* stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
+		0D7AF87917B2635700D7FBFA /* strfunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strfunc.h; sourceTree = "<group>"; };
+		0D7AF87A17B2635700D7FBFA /* prettywriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prettywriter.h; sourceTree = "<group>"; };
+		0D7AF87B17B2635700D7FBFA /* rapidjson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rapidjson.h; sourceTree = "<group>"; };
+		0D7AF87C17B2635700D7FBFA /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
+		0D7AF87D17B2635700D7FBFA /* stringbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringbuffer.h; sourceTree = "<group>"; };
+		0D7AF87E17B2635700D7FBFA /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
+		0D7AF87F17B27ABF00D7FBFA /* colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = colors.json; path = Resources/colors.json; sourceTree = "<group>"; };
 		0D9FA54F178D92DF0087BFF5 /* segment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = segment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D9FA552178D92DF0087BFF5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0D9FA554178D92DF0087BFF5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -962,6 +974,48 @@
 			name = Triangulate;
 			sourceTree = "<group>";
 		};
+		0D7AF87117B2635700D7FBFA /* rapidjson */ = {
+			isa = PBXGroup;
+			children = (
+				0D7AF87217B2635700D7FBFA /* include */,
+			);
+			name = rapidjson;
+			path = libs/rapidjson;
+			sourceTree = "<group>";
+		};
+		0D7AF87217B2635700D7FBFA /* include */ = {
+			isa = PBXGroup;
+			children = (
+				0D7AF87317B2635700D7FBFA /* rapidjson */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		0D7AF87317B2635700D7FBFA /* rapidjson */ = {
+			isa = PBXGroup;
+			children = (
+				0D7AF87417B2635700D7FBFA /* document.h */,
+				0D7AF87517B2635700D7FBFA /* filestream.h */,
+				0D7AF87617B2635700D7FBFA /* internal */,
+				0D7AF87A17B2635700D7FBFA /* prettywriter.h */,
+				0D7AF87B17B2635700D7FBFA /* rapidjson.h */,
+				0D7AF87C17B2635700D7FBFA /* reader.h */,
+				0D7AF87D17B2635700D7FBFA /* stringbuffer.h */,
+				0D7AF87E17B2635700D7FBFA /* writer.h */,
+			);
+			path = rapidjson;
+			sourceTree = "<group>";
+		};
+		0D7AF87617B2635700D7FBFA /* internal */ = {
+			isa = PBXGroup;
+			children = (
+				0D7AF87717B2635700D7FBFA /* pow10.h */,
+				0D7AF87817B2635700D7FBFA /* stack.h */,
+				0D7AF87917B2635700D7FBFA /* strfunc.h */,
+			);
+			path = internal;
+			sourceTree = "<group>";
+		};
 		0D9FA546178D92DF0087BFF5 = {
 			isa = PBXGroup;
 			children = (
@@ -1010,6 +1064,7 @@
 		0D9FA563178D92DF0087BFF5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D7AF87F17B27ABF00D7FBFA /* colors.json */,
 				0DEABA5217A2C4A30050AC0A /* HD */,
 				0DEABA5317A2C4A30050AC0A /* HDR */,
 				0DEABA5417A2C4A30050AC0A /* SD */,
@@ -1045,6 +1100,7 @@
 		0D9FA584178D92E00087BFF5 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				0D7AF87117B2635700D7FBFA /* rapidjson */,
 				0D9FA585178D92E00087BFF5 /* cocos2dx */,
 				0D9FA775178D92E30087BFF5 /* CocosDenshion */,
 				0D9FA78D178D92E30087BFF5 /* extensions */,
@@ -2293,6 +2349,7 @@
 				0DEABA5517A2C4A30050AC0A /* HD in Resources */,
 				0DEABA5617A2C4A30050AC0A /* HDR in Resources */,
 				0DEABA5717A2C4A30050AC0A /* SD in Resources */,
+				0D7AF88017B27ABF00D7FBFA /* colors.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

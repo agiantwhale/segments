@@ -27,6 +27,7 @@ AppDelegate::~AppDelegate()
 
 bool AppDelegate::applicationDidFinishLaunching()
 {
+    LoadColorSchemes();
     LoadScoreInfo();
     
     // initialize director
