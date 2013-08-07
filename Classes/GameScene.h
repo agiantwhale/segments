@@ -10,6 +10,7 @@
 #define __CutGame__GameScene__
 
 #include <cocos2d.h>
+#include "Rig.h"
 #include "Global.h"
 
 using namespace cocos2d;
@@ -38,7 +39,8 @@ public:
     GameScene();
     
     virtual bool init();
-    
+
+    void reverseGame();
     void resetGame();
     void loseGame();
     

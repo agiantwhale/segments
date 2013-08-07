@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D3E40E817ACB94A00B1FA9A /* triangulate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D3E40E617ACB94A00B1FA9A /* triangulate.cpp */; };
 		0D58200D17A3C65A00D6A302 /* SettingsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D58200B17A3C65A00D6A302 /* SettingsScene.cpp */; };
-		0D84F6CA179A9A9000CF3225 /* RippleNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D84F6C8179A9A9000CF3225 /* RippleNode.cpp */; };
+		0D7AF85A17B24AE300D7FBFA /* RippleNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D7AF85817B24AE300D7FBFA /* RippleNode.cpp */; };
 		0D9FA553178D92DF0087BFF5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9FA552178D92DF0087BFF5 /* QuartzCore.framework */; };
 		0D9FA555178D92DF0087BFF5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9FA554178D92DF0087BFF5 /* OpenGLES.framework */; };
 		0D9FA557178D92DF0087BFF5 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9FA556178D92DF0087BFF5 /* OpenAL.framework */; };
@@ -278,7 +278,6 @@
 		0D9FA916178D93360087BFF5 /* PieceNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9FA909178D93360087BFF5 /* PieceNode.cpp */; };
 		0D9FA917178D93360087BFF5 /* PolygonNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9FA90B178D93360087BFF5 /* PolygonNode.cpp */; };
 		0D9FA918178D93360087BFF5 /* Rig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9FA90D178D93360087BFF5 /* Rig.cpp */; };
-		0D9FA919178D93360087BFF5 /* TimerNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9FA90F178D93360087BFF5 /* TimerNode.cpp */; };
 		0D9FA928178D93680087BFF5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9FA91A178D93680087BFF5 /* Default-568h@2x.png */; };
 		0D9FA929178D93680087BFF5 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9FA91B178D93680087BFF5 /* Default.png */; };
 		0D9FA92A178D93680087BFF5 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9FA91C178D93680087BFF5 /* Default@2x.png */; };
@@ -308,8 +307,8 @@
 		0D3E40E717ACB94A00B1FA9A /* triangulate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = triangulate.h; path = Classes/triangulate.h; sourceTree = SOURCE_ROOT; };
 		0D58200B17A3C65A00D6A302 /* SettingsScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SettingsScene.cpp; path = Classes/SettingsScene.cpp; sourceTree = "<group>"; };
 		0D58200C17A3C65A00D6A302 /* SettingsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsScene.h; path = Classes/SettingsScene.h; sourceTree = "<group>"; };
-		0D84F6C8179A9A9000CF3225 /* RippleNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RippleNode.cpp; path = Classes/RippleNode.cpp; sourceTree = "<group>"; };
-		0D84F6C9179A9A9000CF3225 /* RippleNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RippleNode.h; path = Classes/RippleNode.h; sourceTree = "<group>"; };
+		0D7AF85817B24AE300D7FBFA /* RippleNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RippleNode.cpp; path = Classes/RippleNode.cpp; sourceTree = "<group>"; };
+		0D7AF85917B24AE300D7FBFA /* RippleNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RippleNode.h; path = Classes/RippleNode.h; sourceTree = "<group>"; };
 		0D9FA54F178D92DF0087BFF5 /* segment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = segment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D9FA552178D92DF0087BFF5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0D9FA554178D92DF0087BFF5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -901,8 +900,6 @@
 		0D9FA90C178D93360087BFF5 /* PolygonNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PolygonNode.h; path = Classes/PolygonNode.h; sourceTree = "<group>"; };
 		0D9FA90D178D93360087BFF5 /* Rig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Rig.cpp; path = Classes/Rig.cpp; sourceTree = "<group>"; };
 		0D9FA90E178D93360087BFF5 /* Rig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rig.h; path = Classes/Rig.h; sourceTree = "<group>"; };
-		0D9FA90F178D93360087BFF5 /* TimerNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TimerNode.cpp; path = Classes/TimerNode.cpp; sourceTree = "<group>"; };
-		0D9FA910178D93360087BFF5 /* TimerNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimerNode.h; path = Classes/TimerNode.h; sourceTree = "<group>"; };
 		0D9FA91A178D93680087BFF5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
 		0D9FA91B178D93680087BFF5 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
 		0D9FA91C178D93680087BFF5 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
@@ -2217,16 +2214,14 @@
 		0DEEF32B178E7CF400E429F3 /* Node */ = {
 			isa = PBXGroup;
 			children = (
+				0D7AF85817B24AE300D7FBFA /* RippleNode.cpp */,
+				0D7AF85917B24AE300D7FBFA /* RippleNode.h */,
 				0D9FA901178D93360087BFF5 /* ArrowNode.cpp */,
 				0D9FA902178D93360087BFF5 /* ArrowNode.h */,
 				0D9FA909178D93360087BFF5 /* PieceNode.cpp */,
 				0D9FA90A178D93360087BFF5 /* PieceNode.h */,
 				0D9FA90B178D93360087BFF5 /* PolygonNode.cpp */,
 				0D9FA90C178D93360087BFF5 /* PolygonNode.h */,
-				0D9FA90F178D93360087BFF5 /* TimerNode.cpp */,
-				0D9FA910178D93360087BFF5 /* TimerNode.h */,
-				0D84F6C8179A9A9000CF3225 /* RippleNode.cpp */,
-				0D84F6C9179A9A9000CF3225 /* RippleNode.h */,
 			);
 			name = Node;
 			sourceTree = "<group>";
@@ -2563,17 +2558,16 @@
 				0D9FA916178D93360087BFF5 /* PieceNode.cpp in Sources */,
 				0D9FA917178D93360087BFF5 /* PolygonNode.cpp in Sources */,
 				0D9FA918178D93360087BFF5 /* Rig.cpp in Sources */,
-				0D9FA919178D93360087BFF5 /* TimerNode.cpp in Sources */,
 				0DEEF32E178E7D0E00E429F3 /* ScoreScene.cpp in Sources */,
 				0DEEF337178E9C5900E429F3 /* LoseScene.cpp in Sources */,
 				0DD1C11A179048280070FA4B /* Global.cpp in Sources */,
 				0DFE21781798224700E8DA3F /* HudLayer.cpp in Sources */,
-				0D84F6CA179A9A9000CF3225 /* RippleNode.cpp in Sources */,
 				0D58200D17A3C65A00D6A302 /* SettingsScene.cpp in Sources */,
 				0D3E40E817ACB94A00B1FA9A /* triangulate.cpp in Sources */,
 				0DE9BF3217B1053B00CD8C86 /* MainMenuLayer.cpp in Sources */,
 				0DE9BF3817B110B600CD8C86 /* ScoreMenuLayer.cpp in Sources */,
 				0DE9BF3B17B1114B00CD8C86 /* LoseMenuLayer.cpp in Sources */,
+				0D7AF85A17B24AE300D7FBFA /* RippleNode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

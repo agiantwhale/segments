@@ -16,6 +16,7 @@
 using namespace cocos2d;
 
 class PolygonNode;
+class PieceNode;
 class ArrowNode;
 
 struct SliceInfo
@@ -36,6 +37,7 @@ class GameLayer : public CCLayer
 {
     CC_SYNTHESIZE(ScoreInfo, m_scoreInfo, ScoreInfo);
     CC_SYNTHESIZE_READONLY(ArrowNode*, m_arrowNode, Arrow);
+    CC_SYNTHESIZE_READONLY(PieceNode*, m_pieceNode, Piece);
     CC_SYNTHESIZE_READONLY(PolygonNode*, m_goalPolygon, GoalPolygon);
     CC_SYNTHESIZE_READONLY(PolygonNode*, m_slicePolygon, SlicePolygon);
     CC_SYNTHESIZE_READONLY(std::vector<PolygonNode*>, m_newPolygonNodes, NewPolygonNodes);

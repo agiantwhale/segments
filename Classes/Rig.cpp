@@ -9,10 +9,7 @@
 #include "Rig.h"
 #include "Global.h"
 #include "triangulate.h"
-
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-#include <stdlib.h>
-#endif
+#include <algorithm>
 
 #define calculate_determinant_2x2(x1,y1,x2,y2) x1*y2-y1*x2
 #define calculate_determinant_2x3(x1,y1,x2,y2,x3,y3) x1*y2+x2*y3+x3*y1-y1*x2-y2*x3-y3*x1
@@ -23,7 +20,6 @@ float g_rigMaxRadius = 0.f;
 int g_rigVertexes = 3;
 int g_rigCut = 1;
 
-#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
 struct PositionSort
 {
 public:
@@ -36,25 +32,6 @@ public:
 private:
     CCPoint m_startPosition;
 };
-#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-CCPoint g_startPosition = CCPointZero;
-
-int PositionQSORT(const void * a, const void * b)
-{
-    CCPoint first = *(CCPoint*)a;
-    CCPoint second = *(CCPoint*)b;
-    
-    return ( ccpDistanceSQ(first, g_startPosition) - ccpDistanceSQ(second, g_startPosition) );
-}
-
-int AngleQSORT(const void * a, const void * b)
-{
-    float first = *(float*)a;
-    float second = *(float*)b;
-    
-    return ( first - second );
-}
-#endif
 
 struct HorizontalSort
 {
@@ -157,10 +134,12 @@ void RigRandom(Rig& targetRig, int vertexes)
         angles.push_back(GetRandomAngle());
     }
     
-#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     std::sort(angles.begin(), angles.end());
-#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    qsort(&angles[0], angles.size(), sizeof(float), AngleQSORT);
+    
+#if COCOS2D_DEBUG == 1
+    for(int i = 0; i < angles.size(); i++) {
+      CCLOG("Angles[%i]: %f", i, angles[i]);
+    }
 #endif
     
     //Iterate over the angles, create a vertexes stack.
@@ -173,7 +152,7 @@ void RigRandom(Rig& targetRig, int vertexes)
     }
     
     //If the angle between the first and last angle is less than 180 degrees, pop the last point and push back origin.
-    if(angles.back() - angles.front() < 180)
+    if(angles.back() - angles.front() < M_PI)
     {
         targetRig.pop_back();
         targetRig.push_back(CCPointZero);
@@ -200,12 +179,7 @@ bool RigSplit(const CCPoint& startPoint, const CCPoint& endPoint, const Rig& ori
         lastVert = originalRig[i];
     }
     
-#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     std::sort(intersections.begin(), intersections.end(), PositionSort(startPoint));
-#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    g_startPosition = startPoint;
-    qsort(&intersections[0], intersections.size(), sizeof(CCPoint), PositionQSORT);
-#endif
     
     //Check if the split line is valid.
     if(intersections.size() < 2)

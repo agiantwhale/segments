@@ -10,6 +10,7 @@
 #include "GameLayer.h"
 #include "PolygonNode.h"
 #include "RippleNode.h"
+#include "PieceNode.h"
 #include "ArrowNode.h"
 
 RippleNode* CreateRipple(const CCPoint& globalPos)
@@ -67,6 +68,7 @@ GameLayer::GameLayer()
     m_totalAccuracy = 0.f;
     
     m_arrowNode = NULL;
+    m_pieceNode = NULL;
     m_goalPolygon = NULL;
     m_slicePolygon = NULL;
     m_layerState = GAMELAYER_READY;
@@ -79,6 +81,7 @@ GameLayer::~GameLayer()
 void GameLayer::update(float dt)
 {
     m_arrowNode->setSliceInfoStack(m_sliceInfoStack);
+    m_pieceNode->setSliceInfoStack(m_sliceInfoStack);
 }
 
 bool GameLayer::initWithColorInfo(const ColorInfo& colorInfo)
@@ -104,8 +107,11 @@ bool GameLayer::initWithColorInfo(const ColorInfo& colorInfo)
     addChild(m_slicePolygon);
     m_slicePolygon->setPosition(midPoint);
     
+    m_pieceNode = PieceNode::create(m_currentColor.getPieceColor());
+    addChild(m_pieceNode,1);
+    
     m_arrowNode = ArrowNode::create(m_currentColor.getArrowColor());
-    addChild(m_arrowNode,1);
+    addChild(m_arrowNode,2);
     
     const int MIN_CUTS = 1;
     const int MAX_CUTS = MIN(RIG_VERTEXES(), 5);
