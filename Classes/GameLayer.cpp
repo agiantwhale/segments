@@ -71,7 +71,6 @@ GameLayer::GameLayer()
     m_pieceNode = NULL;
     m_goalPolygon = NULL;
     m_slicePolygon = NULL;
-    m_layerState = GAMELAYER_READY;
 }
 
 GameLayer::~GameLayer()
@@ -80,8 +79,8 @@ GameLayer::~GameLayer()
 
 void GameLayer::update(float dt)
 {
-    m_arrowNode->setSliceInfoStack(m_sliceInfoStack);
     m_pieceNode->setSliceInfoStack(m_sliceInfoStack);
+    m_arrowNode->setSliceInfoStack(m_sliceInfoStack);
 }
 
 bool GameLayer::initWithColorInfo(const ColorInfo& colorInfo)
@@ -108,10 +107,10 @@ bool GameLayer::initWithColorInfo(const ColorInfo& colorInfo)
     m_slicePolygon->setPosition(midPoint);
     
     m_pieceNode = PieceNode::create(m_currentColor.getPieceColor());
-    addChild(m_pieceNode,1);
-    
+    m_slicePolygon->addChild(m_pieceNode);
+     
     m_arrowNode = ArrowNode::create(m_currentColor.getArrowColor());
-    addChild(m_arrowNode,2);
+    addChild(m_arrowNode, 1);
     
     const int MIN_CUTS = 1;
     const int MAX_CUTS = MIN(RIG_VERTEXES(), 5);
@@ -180,155 +179,16 @@ bool GameLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
     GameScene* gameScene = (GameScene*)getParent();
     
-    switch (m_layerState) {
-        case GAMELAYER_READY:
-        {
-            if( gameScene->getLevelState() != LEVEL_LOSE )
-            {
-                addChild(CreateRipple(pTouch->getStartLocation()));
-                
-                SliceInfo info;
-                info.touchId = pTouch->getID();
-                info.beginPoint = pTouch->getStartLocation();
-                info.endPoint = pTouch->getLocation();
-                
-                m_sliceInfoStack.push_back(info);
-            }
-        }
-            break;
-            
-        case GAMELAYER_SLICED:
-        {
-            int targetRig = -1;
-            for(int i = 0; i < m_newPolygonNodes.size(); i++)
-            {
-                CCPoint endPoint = CCPointApplyAffineTransform( pTouch->getLocation(), m_newPolygonNodes[i]->worldToNodeTransform());
-                
-                if(RigCheckPoint(m_newPolygonNodes[i]->getRig(), endPoint))
-                {
-                    const CCSize windowsSize = CCDirector::sharedDirector()->getWinSize();
-                    CCPoint midPoint = ccpMult(CCPointMake(windowsSize.width, windowsSize.height),0.5f);
-                    
-                    targetRig = i;
-                    m_newPolygonNodes[i]->runAction(CCMoveTo::create(0.25f, ccpSub(midPoint, RigCenter(m_newPolygonNodes[i]->getRig()))));
-                    m_slicePolygon = m_newPolygonNodes[i];
-                }
-            }
-            
-            if(targetRig != -1)
-            {
-                m_layerState = GAMELAYER_READY;
-                
-                for(int i = 0; i < m_newPolygonNodes.size(); i++)
-                {
-                    if(targetRig == i) continue;
-                    
-                    CCPoint pos = m_newPolygonNodes[i]->getPosition();
-                    CCPoint gCenter = RigCenter(m_slicePolygon->getRig());
-                    CCPoint center = RigCenter(m_newPolygonNodes[i]->getRig());
-                    
-                    m_newPolygonNodes[i]->setFillColor(m_currentColor.getPieceColor());
-                    FadePolygon(m_newPolygonNodes[i], ccpAdd(pos, ccpSub(center, gCenter)), 0.6f);
-                }
-                
-                m_newPolygonNodes.clear();
-                
-                float similarity = 0.f;
-                if( RigSimilar(m_slicePolygon->getRig(), m_goalPolygon->getRig(), similarity) )
-                {
-                    gameScene->setLevelState(LEVEL_WIN);
-                    
-                    m_scoreInfo.level = RIG_VERTEXES();
-                    m_scoreInfo.accuracy += similarity;
-                    
-                    gameScene->setScoreInfo(m_scoreInfo);
-                    
-                    g_rigVertexes++;
-                    
-                    const CCSize windowsSize = CCDirector::sharedDirector()->getWinSize();
-                    CCPoint midPoint = ccpMult(CCPointMake(windowsSize.width, windowsSize.height),0.5f);
-                    CCPoint rigCenter = RigCenter(m_slicePolygon->getRig());
-                    
-                    float slice = RigArea(m_slicePolygon->getRig());
-                    float goal = RigArea(m_goalPolygon->getRig());
-                    float scale = sqrtf(slice/goal);
-                    
-                    m_slicePolygon->stopAllActions();
-                    
-                    CCSequence* winSequence = CCSequence::create
-                    (
-                     //Move the slice node to the goal node.
-                     CCSpawn::create(CCMoveTo::create(0.25f, ccpSub(midPoint, rigCenter)),
-                                     CCRotateTo::create(0.25f, m_goalPolygon->getRotation()),
-                                     CCScaleTo::create(0.25f, m_goalPolygon->getScale() * scale),
-                                     NULL),
-                     
-                     //Wait 100 milliseconds.
-                     CCDelayTime::create(0.1f),
-                     
-                     //Spawn out the node.
-                     CCSpawn::create(CCScaleBy::create(0.5f, 1.25f),
-                                     CCFadeOut::create(0.5f),
-                                     NULL),
-                     
-                     CCDelayTime::create(0.25f),
-                     
-                     CCCallFunc::create(gameScene, callfunc_selector(GameScene::resetGame)),
-                     
-                     NULL
-                    );
-                
-                    m_slicePolygon->runAction(winSequence);
-                    
-                    int percentage = static_cast<int>( similarity * 100.f );
-                    CCString* labelString = CCString::createWithFormat("%i%%", percentage);
-                    CCLabelTTF* label = CCLabelTTF::create(labelString->getCString(), DEFAULT_FONT, DEFAULT_LABEL_SIZE * g_screenScale);
-                    label->setPosition(midPoint);
-                    label->setVisible(false);
-                    addChild(label);
-                    
-                    CCSequence* labelSequence = CCSequence::create
-                    (
-                     //Wait 100 milliseconds.
-                     CCDelayTime::create(0.35f),
-                     
-                     CCShow::create(),
-                     
-                     //Spawn out the node.
-                     CCSpawn::create(CCScaleBy::create(0.5f, 1.25f),
-                                     CCFadeOut::create(0.5f),
-                                     NULL),
-                     
-                     NULL
-                    );
-                    
-                    label->runAction(labelSequence);
-                    
-                    CCSequence* goalSequence = CCSequence::create
-                    (
-                     //Wait 100 milliseconds.
-                     CCDelayTime::create(0.35f),
-                     
-                     //Spawn out the node.
-                     CCSpawn::create(CCScaleBy::create(0.5f, 1.25f),
-                                     CCFadeOut::create(0.5f),
-                                     NULL),
-                     
-                     NULL
-                     );
-                    
-                    m_goalPolygon->runAction(goalSequence);
-                }
-                else if(RIG_CUT() <= 0)
-                {
-                    gameScene->loseGame();
-                }
-            }
-        }
-            break;
-            
-        default:
-            break;
+    if( gameScene->getLevelState() != LEVEL_LOSE )
+    {
+        addChild(CreateRipple(pTouch->getStartLocation()));
+        
+        SliceInfo info;
+        info.touchId = pTouch->getID();
+        info.beginPoint = pTouch->getStartLocation();
+        info.endPoint = pTouch->getLocation();
+        
+        m_sliceInfoStack.push_back(info);
     }
     
     return true;
@@ -344,6 +204,9 @@ void GameLayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
         }
     }
 }
+
+bool RigAreaCompare(Rig i, Rig j) { return RigArea(i)<RigArea(j); }
+
 void GameLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 {
     for(int i = 0; i < m_sliceInfoStack.size(); i++)
@@ -357,7 +220,7 @@ void GameLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
     }
     
     GameScene* gameScene = (GameScene*)getParent();
-    if(m_layerState != GAMELAYER_READY || gameScene->getLevelState() != LEVEL_GAME) return;
+    if(gameScene->getLevelState() != LEVEL_GAME) return;
     
     addChild(CreateRipple(pTouch->getLocation()));
     
@@ -365,6 +228,7 @@ void GameLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
     CCPoint endPoint = CCPointApplyAffineTransform( pTouch->getLocation(), m_slicePolygon->worldToNodeTransform());
     
     CCPoint oldPos = m_slicePolygon->getPosition();
+    CCPoint oldCenter = RigCenter(m_slicePolygon->getRig());
     std::vector<Rig> splittedRigs;
     if(RigSplit(startPoint, endPoint, m_slicePolygon->getRig(), splittedRigs))
     {
@@ -374,19 +238,119 @@ void GameLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
         m_slicePolygon->removeFromParent();
         m_slicePolygon = NULL;
         
-        for(int v = 0; v < splittedRigs.size(); v++)
-        {
-            const CCPoint rigCenter = RigCenter(splittedRigs[v]);
+        std::vector<Rig>::iterator nextPolygon = std::max_element(splittedRigs.begin(), splittedRigs.end(), RigAreaCompare);
+        
+        m_slicePolygon = PolygonNode::createWithRig(*nextPolygon, m_currentColor.getFillColor(), m_currentColor.getOutlineColor() );
+        m_slicePolygon->setPosition(oldPos);
+        addChild(m_slicePolygon);
+        
+        m_pieceNode = PieceNode::create(m_currentColor.getPieceColor());
+        m_slicePolygon->addChild(m_pieceNode);
+        
+        const CCSize windowsSize = CCDirector::sharedDirector()->getWinSize();
+        CCPoint midPoint = ccpMult(CCPointMake(windowsSize.width, windowsSize.height),0.5f);
+        m_slicePolygon->runAction(CCMoveTo::create(0.25f, ccpSub(midPoint, RigCenter(*nextPolygon))));
+        
+        for(std::vector<Rig>::iterator iter = splittedRigs.begin(); iter != splittedRigs.end(); iter++) {
+            if(iter == nextPolygon) continue;
             
-            PolygonNode* newPolygon = PolygonNode::createWithRig(splittedRigs[v], m_currentColor.getFillColor(), m_currentColor.getOutlineColor() );
-            addChild(newPolygon);
+            CCPoint center = RigCenter(*iter);
+            PolygonNode* newPolygon = PolygonNode::createWithRig(*iter, m_currentColor.getPieceColor(), m_currentColor.getOutlineColor() );
             newPolygon->setPosition(oldPos);
-            newPolygon->runAction(CCMoveBy::create(0.25f, ccpMult(rigCenter, 0.25f)));
-            
-            m_newPolygonNodes.push_back(newPolygon);
+            addChild(newPolygon);
+            FadePolygon(newPolygon, ccpAdd(oldPos, ccpSub(oldCenter, center)), 0.6f);
         }
         
-        m_layerState = GAMELAYER_SLICED;
+        float similarity = 0.f;
+        if( RigSimilar(*nextPolygon, m_goalPolygon->getRig(), similarity) )
+        {
+            gameScene->setLevelState(LEVEL_WIN);
+            
+            m_scoreInfo.level = RIG_VERTEXES();
+            m_scoreInfo.accuracy += similarity;
+            
+            gameScene->setScoreInfo(m_scoreInfo);
+            
+            g_rigVertexes++;
+            
+            const CCSize windowsSize = CCDirector::sharedDirector()->getWinSize();
+            CCPoint midPoint = ccpMult(CCPointMake(windowsSize.width, windowsSize.height),0.5f);
+            CCPoint rigCenter = RigCenter(m_slicePolygon->getRig());
+            
+            float slice = RigArea(m_slicePolygon->getRig());
+            float goal = RigArea(m_goalPolygon->getRig());
+            float scale = sqrtf(slice/goal);
+            
+            m_slicePolygon->stopAllActions();
+            
+            CCSequence* winSequence = CCSequence::create
+            (
+             //Move the slice node to the goal node.
+             CCSpawn::create(CCMoveTo::create(0.25f, ccpSub(midPoint, rigCenter)),
+                             CCRotateTo::create(0.25f, m_goalPolygon->getRotation()),
+                             CCScaleTo::create(0.25f, m_goalPolygon->getScale() * scale),
+                             NULL),
+             
+             //Wait 100 milliseconds.
+             CCDelayTime::create(0.1f),
+             
+             //Spawn out the node.
+             CCSpawn::create(CCScaleBy::create(0.5f, 1.25f),
+                             CCFadeOut::create(0.5f),
+                             NULL),
+             
+             CCDelayTime::create(0.25f),
+             
+             CCCallFunc::create(gameScene, callfunc_selector(GameScene::resetGame)),
+             
+             NULL
+             );
+            
+            m_slicePolygon->runAction(winSequence);
+            
+            int percentage = static_cast<int>( similarity * 100.f );
+            CCString* labelString = CCString::createWithFormat("%i%%", percentage);
+            CCLabelTTF* label = CCLabelTTF::create(labelString->getCString(), DEFAULT_FONT, DEFAULT_LABEL_SIZE * g_screenScale);
+            label->setPosition(midPoint);
+            label->setVisible(false);
+            addChild(label);
+            
+            CCSequence* labelSequence = CCSequence::create
+            (
+             //Wait 100 milliseconds.
+             CCDelayTime::create(0.35f),
+             
+             CCShow::create(),
+             
+             //Spawn out the node.
+             CCSpawn::create(CCScaleBy::create(0.5f, 1.25f),
+                             CCFadeOut::create(0.5f),
+                             NULL),
+             
+             NULL
+             );
+            
+            label->runAction(labelSequence);
+            
+            CCSequence* goalSequence = CCSequence::create
+            (
+             //Wait 100 milliseconds.
+             CCDelayTime::create(0.35f),
+             
+             //Spawn out the node.
+             CCSpawn::create(CCScaleBy::create(0.5f, 1.25f),
+                             CCFadeOut::create(0.5f),
+                             NULL),
+             
+             NULL
+             );
+            
+            m_goalPolygon->runAction(goalSequence);
+        }
+        else if(RIG_CUT() <= 0)
+        {
+            gameScene->loseGame();
+        }
     }
 }
 

@@ -9,6 +9,7 @@
 #include "Global.h"
 #include "PieceNode.h"
 #include "PolygonNode.h"
+#include "GameLayer.h"
 
 PieceNode* PieceNode::create(const ccColor4B& color)
 {
@@ -39,6 +40,7 @@ void PieceNode::draw()
     ccDrawInit();
     
     glLineWidth(3.f * SCREEN_SCALE());
+    ccPointSize(3.f * SCREEN_SCALE() * 0.5f);
     
     for(int i = 0; i < m_sliceInfoStack.size(); i++)
     {
@@ -68,9 +70,11 @@ void PieceNode::draw()
                 
                 Rig& curRig = rigStack[v];
                 
-                ccDrawColor4B(m_pieceColor.r, m_pieceColor.g, m_pieceColor.b, m_pieceColor.a);
+                ccColor4B outlineColor = slicePolygon->getOutlineColor();
+                ccDrawColor4B(outlineColor.r, outlineColor.g, outlineColor.b, outlineColor.a);
                 
                 ccDrawPoly(&curRig[0], curRig.size(), true);
+                ccDrawPoints(&curRig[0], curRig.size());
                 
                 std::vector<Rig> triangulatedRigs;
                 RigTriangulate(curRig, triangulatedRigs);

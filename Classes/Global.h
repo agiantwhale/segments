@@ -10,6 +10,7 @@
 #define __segment__Global__
 
 #include <cocos2d.h>
+#include <algorithm>
 
 using namespace cocos2d;
 

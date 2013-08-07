@@ -40,7 +40,6 @@ public:
     
     virtual bool init();
 
-    void reverseGame();
     void resetGame();
     void loseGame();
     

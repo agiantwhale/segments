@@ -136,12 +136,6 @@ void RigRandom(Rig& targetRig, int vertexes)
     
     std::sort(angles.begin(), angles.end());
     
-#if COCOS2D_DEBUG == 1
-    for(int i = 0; i < angles.size(); i++) {
-      CCLOG("Angles[%i]: %f", i, angles[i]);
-    }
-#endif
-    
     //Iterate over the angles, create a vertexes stack.
     targetRig.reserve(vertexNum);
     for(std::vector<float>::iterator iter = angles.begin(); iter != angles.end(); iter++)

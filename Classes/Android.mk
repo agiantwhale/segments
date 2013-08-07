@@ -24,7 +24,6 @@ RippleNode.cpp \
 ScoreMenuLayer.cpp \
 ScoreScene.cpp \
 SettingsScene.cpp \
-TimerNode.cpp \
 triangulate.cpp
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static

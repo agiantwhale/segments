@@ -204,10 +204,6 @@ bool GameScene::init()
     return true;
 }
 
-void GameScene::reverseGame() {
-    
-}
-
 void GameScene::resetGame()
 {
     //Clear all previous game.
