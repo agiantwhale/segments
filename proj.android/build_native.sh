@@ -1,5 +1,5 @@
 APPNAME="segment"
-NDK_ROOT="/Users/iljae/AndroidNDK/android-ndk-r8e"
+NDK_ROOT="/Users/iljaelee/Android/android-ndk-r8e"
 
 bash generateMakeFile.sh
 
