@@ -51,7 +51,11 @@ public:
     virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
     
 private:
+    void updateRipples();
+    void createRipple(const CCPoint& globalPos);
+    
     float m_totalAccuracy;
+    float m_rippleTimer;
 };
 
 #endif /* defined(__CutGame__GameLayer__) */

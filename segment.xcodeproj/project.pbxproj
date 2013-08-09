@@ -10,7 +10,6 @@
 		0D3E40E817ACB94A00B1FA9A /* triangulate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D3E40E617ACB94A00B1FA9A /* triangulate.cpp */; };
 		0D58200D17A3C65A00D6A302 /* SettingsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D58200B17A3C65A00D6A302 /* SettingsScene.cpp */; };
 		0D7AF85A17B24AE300D7FBFA /* RippleNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D7AF85817B24AE300D7FBFA /* RippleNode.cpp */; };
-		0D7AF88017B27ABF00D7FBFA /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D7AF87F17B27ABF00D7FBFA /* colors.json */; };
 		0D9FA553178D92DF0087BFF5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9FA552178D92DF0087BFF5 /* QuartzCore.framework */; };
 		0D9FA555178D92DF0087BFF5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9FA554178D92DF0087BFF5 /* OpenGLES.framework */; };
 		0D9FA557178D92DF0087BFF5 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9FA556178D92DF0087BFF5 /* OpenAL.framework */; };
@@ -263,13 +262,14 @@
 		0DE9BF3217B1053B00CD8C86 /* MainMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9BF3017B1053B00CD8C86 /* MainMenuLayer.cpp */; };
 		0DE9BF3817B110B600CD8C86 /* ScoreMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9BF3617B110B600CD8C86 /* ScoreMenuLayer.cpp */; };
 		0DE9BF3B17B1114B00CD8C86 /* LoseMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9BF3917B1114A00CD8C86 /* LoseMenuLayer.cpp */; };
-		0DEABA5517A2C4A30050AC0A /* HD in Resources */ = {isa = PBXBuildFile; fileRef = 0DEABA5217A2C4A30050AC0A /* HD */; };
-		0DEABA5617A2C4A30050AC0A /* HDR in Resources */ = {isa = PBXBuildFile; fileRef = 0DEABA5317A2C4A30050AC0A /* HDR */; };
-		0DEABA5717A2C4A30050AC0A /* SD in Resources */ = {isa = PBXBuildFile; fileRef = 0DEABA5417A2C4A30050AC0A /* SD */; };
 		0DEEF31F178E77A700E429F3 /* AdventPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DEEF31E178E77A700E429F3 /* AdventPro-Regular.ttf */; };
 		0DEEF32E178E7D0E00E429F3 /* ScoreScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEEF32C178E7D0E00E429F3 /* ScoreScene.cpp */; };
 		0DEEF337178E9C5900E429F3 /* LoseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEEF335178E9C5900E429F3 /* LoseScene.cpp */; };
 		0DFE21781798224700E8DA3F /* HudLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DFE21761798224700E8DA3F /* HudLayer.cpp */; };
+		3A817DDF17B4DD9300EC875B /* HSL2RGB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A817DDD17B4DD9300EC875B /* HSL2RGB.cpp */; };
+		3A817DE417B5042A00EC875B /* HD in Resources */ = {isa = PBXBuildFile; fileRef = 3A817DE117B5042A00EC875B /* HD */; };
+		3A817DE517B5042A00EC875B /* HDR in Resources */ = {isa = PBXBuildFile; fileRef = 3A817DE217B5042A00EC875B /* HDR */; };
+		3A817DE617B5042A00EC875B /* SD in Resources */ = {isa = PBXBuildFile; fileRef = 3A817DE317B5042A00EC875B /* SD */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -289,7 +289,6 @@
 		0D7AF87C17B2635700D7FBFA /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
 		0D7AF87D17B2635700D7FBFA /* stringbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringbuffer.h; sourceTree = "<group>"; };
 		0D7AF87E17B2635700D7FBFA /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
-		0D7AF87F17B27ABF00D7FBFA /* colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = colors.json; path = Resources/colors.json; sourceTree = "<group>"; };
 		0D9FA54F178D92DF0087BFF5 /* segment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = segment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D9FA552178D92DF0087BFF5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0D9FA554178D92DF0087BFF5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -837,9 +836,6 @@
 		0DE9BF3717B110B600CD8C86 /* ScoreMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreMenuLayer.h; path = Classes/ScoreMenuLayer.h; sourceTree = "<group>"; };
 		0DE9BF3917B1114A00CD8C86 /* LoseMenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoseMenuLayer.cpp; path = Classes/LoseMenuLayer.cpp; sourceTree = "<group>"; };
 		0DE9BF3A17B1114A00CD8C86 /* LoseMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoseMenuLayer.h; path = Classes/LoseMenuLayer.h; sourceTree = "<group>"; };
-		0DEABA5217A2C4A30050AC0A /* HD */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HD; path = art/Export/HD; sourceTree = SOURCE_ROOT; };
-		0DEABA5317A2C4A30050AC0A /* HDR */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HDR; path = art/Export/HDR; sourceTree = SOURCE_ROOT; };
-		0DEABA5417A2C4A30050AC0A /* SD */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SD; path = art/Export/SD; sourceTree = SOURCE_ROOT; };
 		0DEEF31E178E77A700E429F3 /* AdventPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AdventPro-Regular.ttf"; path = "Resources/AdventPro-Regular.ttf"; sourceTree = "<group>"; };
 		0DEEF32C178E7D0E00E429F3 /* ScoreScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ScoreScene.cpp; path = Classes/ScoreScene.cpp; sourceTree = "<group>"; };
 		0DEEF32D178E7D0E00E429F3 /* ScoreScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreScene.h; path = Classes/ScoreScene.h; sourceTree = "<group>"; };
@@ -847,6 +843,11 @@
 		0DEEF336178E9C5900E429F3 /* LoseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoseScene.h; path = Classes/LoseScene.h; sourceTree = "<group>"; };
 		0DFE21761798224700E8DA3F /* HudLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HudLayer.cpp; path = Classes/HudLayer.cpp; sourceTree = "<group>"; };
 		0DFE21771798224700E8DA3F /* HudLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HudLayer.h; path = Classes/HudLayer.h; sourceTree = "<group>"; };
+		3A817DDD17B4DD9300EC875B /* HSL2RGB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HSL2RGB.cpp; path = Classes/HSL2RGB.cpp; sourceTree = "<group>"; };
+		3A817DDE17B4DD9300EC875B /* HSL2RGB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HSL2RGB.h; path = Classes/HSL2RGB.h; sourceTree = "<group>"; };
+		3A817DE117B5042A00EC875B /* HD */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HD; path = art/Export/HD; sourceTree = "<group>"; };
+		3A817DE217B5042A00EC875B /* HDR */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HDR; path = art/Export/HDR; sourceTree = "<group>"; };
+		3A817DE317B5042A00EC875B /* SD */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SD; path = art/Export/SD; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -970,10 +971,9 @@
 		0D9FA563178D92DF0087BFF5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0D7AF87F17B27ABF00D7FBFA /* colors.json */,
-				0DEABA5217A2C4A30050AC0A /* HD */,
-				0DEABA5317A2C4A30050AC0A /* HDR */,
-				0DEABA5417A2C4A30050AC0A /* SD */,
+				3A817DE117B5042A00EC875B /* HD */,
+				3A817DE217B5042A00EC875B /* HDR */,
+				3A817DE317B5042A00EC875B /* SD */,
 				0DEEF31E178E77A700E429F3 /* AdventPro-Regular.ttf */,
 				0D9FA91A178D93680087BFF5 /* Default-568h@2x.png */,
 				0D9FA91B178D93680087BFF5 /* Default.png */,
@@ -2006,6 +2006,7 @@
 		0D9FA8F3178D92E40087BFF5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3A817DE017B4DD9600EC875B /* Color */,
 				0D3E40E517ACB93800B1FA9A /* Triangulate */,
 				0DEEF32B178E7CF400E429F3 /* Node */,
 				0DEEF32A178E7CE800E429F3 /* Layer */,
@@ -2067,6 +2068,15 @@
 				0D9FA90C178D93360087BFF5 /* PolygonNode.h */,
 			);
 			name = Node;
+			sourceTree = "<group>";
+		};
+		3A817DE017B4DD9600EC875B /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				3A817DDD17B4DD9300EC875B /* HSL2RGB.cpp */,
+				3A817DDE17B4DD9300EC875B /* HSL2RGB.h */,
+			);
+			name = Color;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2133,10 +2143,9 @@
 				0D9FA933178D93680087BFF5 /* iTunesArtwork in Resources */,
 				0D9FA934178D93680087BFF5 /* Offside-Regular.ttf in Resources */,
 				0DEEF31F178E77A700E429F3 /* AdventPro-Regular.ttf in Resources */,
-				0DEABA5517A2C4A30050AC0A /* HD in Resources */,
-				0DEABA5617A2C4A30050AC0A /* HDR in Resources */,
-				0DEABA5717A2C4A30050AC0A /* SD in Resources */,
-				0D7AF88017B27ABF00D7FBFA /* colors.json in Resources */,
+				3A817DE417B5042A00EC875B /* HD in Resources */,
+				3A817DE517B5042A00EC875B /* HDR in Resources */,
+				3A817DE617B5042A00EC875B /* SD in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2381,6 +2390,7 @@
 				0DE9BF3817B110B600CD8C86 /* ScoreMenuLayer.cpp in Sources */,
 				0DE9BF3B17B1114B00CD8C86 /* LoseMenuLayer.cpp in Sources */,
 				0D7AF85A17B24AE300D7FBFA /* RippleNode.cpp in Sources */,
+				3A817DDF17B4DD9300EC875B /* HSL2RGB.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

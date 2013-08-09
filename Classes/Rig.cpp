@@ -145,11 +145,14 @@ void RigRandom(Rig& targetRig, int vertexes)
         targetRig.push_back(ccpRotateByAngle(highPoint, CCPointZero, angle));
     }
     
-    //If the angle between the first and last angle is less than 180 degrees, pop the last point and push back origin.
-    if(angles.back() - angles.front() < M_PI)
-    {
-        targetRig.pop_back();
-        targetRig.push_back(CCPointZero);
+    //Make sure the first and last point doesn't intersect.
+    for(int i = 0; i < targetRig.size()-1; i++) {
+        CCPoint startPoint = targetRig[i];
+        CCPoint endPoint = targetRig[i+1];
+        if(ccpSegmentIntersect(startPoint, endPoint, targetRig.front(), targetRig.back())) {
+            targetRig.push_back(CCPointZero);
+            break;
+        }
     }
 }
 
@@ -316,6 +319,11 @@ float RigArea(const Rig& rig)
 
 bool RigSimilar(const Rig& compare, const Rig& index, float& similarity)
 {
+    int difference = abs(compare.size() - index.size());
+    int del = MAX(compare.size(), index.size());
+    float percentage = (float)difference / (float)del;
+    if( percentage > 0.25 ) return false;
+
     //Jaccard index's overlap coefficient
     //http://en.wikipedia.org/wiki/Overlap_coefficient
     Rig smallerRig = compare;

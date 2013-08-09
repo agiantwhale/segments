@@ -1041,9 +1041,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="483.5079"
-     inkscape:cy="669.27323"
+     inkscape:zoom="0.9899495"
+     inkscape:cx="383.32208"
+     inkscape:cy="885.23191"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -1089,7 +1089,7 @@
        id="g5206">
       <path
          transform="matrix(0.43448276,0,0,0.43448276,-216.08621,341.05629)"
-         d="m 758.57143,434.71429 a 103.57143,103.57143 0 1 1 -207.14286,0 103.57143,103.57143 0 1 1 207.14286,0 z"
+         d="m 758.57143,434.71429 c 0,57.20092 -46.37051,103.57143 -103.57143,103.57143 -57.20092,0 -103.57143,-46.37051 -103.57143,-103.57143 0,-57.20091 46.37051,-103.57142 103.57143,-103.57142 57.20092,0 103.57143,46.37051 103.57143,103.57142 z"
          sodipodi:ry="103.57143"
          sodipodi:rx="103.57143"
          sodipodi:cy="434.71429"
@@ -1105,7 +1105,7 @@
          sodipodi:cy="434.71429"
          sodipodi:rx="103.57143"
          sodipodi:ry="103.57143"
-         d="m 758.57143,434.71429 a 103.57143,103.57143 0 1 1 -207.14286,0 103.57143,103.57143 0 1 1 207.14286,0 z"
+         d="m 758.57143,434.71429 c 0,57.20092 -46.37051,103.57143 -103.57143,103.57143 -57.20092,0 -103.57143,-46.37051 -103.57143,-103.57143 0,-57.20091 46.37051,-103.57142 103.57143,-103.57142 57.20092,0 103.57143,46.37051 103.57143,103.57142 z"
          transform="matrix(0.33832159,0,0,0.33832159,-153.10063,382.85893)" />
     </g>
     <g
@@ -1395,11 +1395,11 @@
          sodipodi:cy="434.71429"
          sodipodi:rx="103.57143"
          sodipodi:ry="103.57143"
-         d="m 758.57143,434.71429 a 103.57143,103.57143 0 1 1 -207.14286,0 103.57143,103.57143 0 1 1 207.14286,0 z"
+         d="m 758.57143,434.71429 c 0,57.20092 -46.37051,103.57143 -103.57143,103.57143 -57.20092,0 -103.57143,-46.37051 -103.57143,-103.57143 0,-57.20091 46.37051,-103.57142 103.57143,-103.57142 57.20092,0 103.57143,46.37051 103.57143,103.57142 z"
          transform="matrix(0.43448276,0,0,0.43448276,-216.08621,251.05629)" />
       <path
          transform="matrix(0.33832159,0,0,0.33832159,-153.10064,292.85894)"
-         d="m 758.57143,434.71429 a 103.57143,103.57143 0 1 1 -207.14286,0 103.57143,103.57143 0 1 1 207.14286,0 z"
+         d="m 758.57143,434.71429 c 0,57.20092 -46.37051,103.57143 -103.57143,103.57143 -57.20092,0 -103.57143,-46.37051 -103.57143,-103.57143 0,-57.20091 46.37051,-103.57142 103.57143,-103.57142 57.20092,0 103.57143,46.37051 103.57143,103.57142 z"
          sodipodi:ry="103.57143"
          sodipodi:rx="103.57143"
          sodipodi:cy="434.71429"
@@ -1926,7 +1926,7 @@
     </g>
     <g
        id="g3158"
-       transform="translate(263.68652,-32.57334)"
+       transform="translate(160.97052,-32.573334)"
        inkscape:export-filename="/Users/iljae/segment/art/Export/cut.png"
        inkscape:export-xdpi="148.49248"
        inkscape:export-ydpi="148.49248">
@@ -1947,7 +1947,7 @@
     </g>
     <g
        id="g5200"
-       transform="translate(-81.51164,46.51386)"
+       transform="translate(-169.39597,46.513867)"
        inkscape:export-filename="/Users/iljae/segment/art/exit.png"
        inkscape:export-xdpi="163.85001"
        inkscape:export-ydpi="163.85001">
@@ -1984,7 +1984,7 @@
     </g>
     <g
        id="g5174"
-       transform="translate(-148.84058,68.29958)"
+       transform="translate(-221.89323,68.299583)"
        inkscape:export-filename="/Users/iljae/segment/art/next.png"
        inkscape:export-xdpi="163.85001"
        inkscape:export-ydpi="163.85001">
@@ -2021,7 +2021,7 @@
     </g>
     <g
        id="g3162"
-       transform="translate(-205.74559,71.15672)"
+       transform="translate(-263.96658,71.156729)"
        inkscape:export-filename="/Users/iljae/segment/art/reload.png"
        inkscape:export-xdpi="163.85001"
        inkscape:export-ydpi="163.85001">
@@ -2055,5 +2055,15 @@
            inkscape:connector-curvature="0" />
       </g>
     </g>
+    <path
+       sodipodi:type="arc"
+       style="fill:none;stroke:#ffffff;stroke-width:15;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path3254"
+       sodipodi:cx="401.53564"
+       sodipodi:cy="261.8399"
+       sodipodi:rx="43.941635"
+       sodipodi:ry="43.941635"
+       d="m 445.47728,261.8399 a 43.941635,43.941635 0 1 1 -87.88327,0 43.941635,43.941635 0 1 1 87.88327,0 z"
+       transform="translate(236.12067,48.821861)" />
   </g>
 </svg>

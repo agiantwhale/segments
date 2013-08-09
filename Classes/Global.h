@@ -50,6 +50,8 @@ struct ScoreInfo
     float accuracy;
 };
 
+std::string NamePolygon( unsigned int numberOfSides );
+
 void LoadColorSchemes();
 ColorInfo RandomColorScheme();
 

@@ -7,63 +7,45 @@
 //
 
 #include "Global.h"
+#include "HSL2RGB.h"
 #include <cocos2d.h>
-#include <document.h>
 
 using namespace cocos2d;
 
 float g_screenScale = 0.f;
 ScoreInfo g_scoreInfo;
-std::vector<ColorInfo> g_colorSchemes;
 
-ccColor4B ArrayToColor(const rapidjson::Value& value) {
-    return ccc4(    value[rapidjson::SizeType(0)].GetInt(),
-                    value[rapidjson::SizeType(1)].GetInt(),
-                    value[rapidjson::SizeType(2)].GetInt(),
-                    value[rapidjson::SizeType(3)].GetInt()     );
+std::string NamePolygon( unsigned int numberOfSides ) {
+    std::string name;
+    
+    return name + "gon";
 }
 
-void LoadColorSchemes()
-{
-    g_colorSchemes.clear();
-    
-    std::string fullPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("colors.json");
-    unsigned long bufferSize = 0;
-    const char* fileData = (const char*)(CCFileUtils::sharedFileUtils()->getFileData(fullPath.c_str(), "r", &bufferSize));
-    
-    if(fileData != NULL)
-    {
-        std::string clearData(fileData);
-        size_t pos = clearData.rfind("}");
-        clearData = clearData.substr(0, pos+1);
-        
-        rapidjson::Document document;
-        document.Parse<0>(clearData.c_str());
-        
-        if(document.HasParseError()) {
-            CCLOGERROR("Parser error: %s", document.GetParseError());
-            return;
-        }
-        
-        const rapidjson::Value& colors = document["colors"];
-        
-        for(rapidjson::SizeType i = 0; i < colors.Size(); i++ ) {
-            ColorInfo info;
-            
-            info.setFillColor(ArrayToColor(colors[i]["fill"]));
-            info.setOutlineColor(ArrayToColor(colors[i]["outline"]));
-            info.setArrowColor(ArrayToColor(colors[i]["arrow"]));
-            info.setPieceColor(ArrayToColor(colors[i]["piece"]));
-            info.setBackgroundColor(ArrayToColor(colors[i]["background"]));
-            
-            g_colorSchemes.push_back(info);
-        }
-    }
-}
+/*
+ 
+ Color Chart
+ 
+ fill		-	L: 0.5	-	S: 0.5
+ outline	-	L: 0.35	-	S: 0.9
+ arrow		-	L: 0.8	-	S: 0.5
+ piece		-	L: 0.55	-	S: 0.3
+ background	-	L: 0.4	-	S: 0.4
+ 
+ */
 
 ColorInfo RandomColorScheme()
 {
-    return g_colorSchemes[rand() % g_colorSchemes.size()];
+    ColorInfo randomScheme;
+    
+    int hValue = (int)360 * CCRANDOM_0_1();
+    
+    randomScheme.setFillColor(HSLtoColor(hValue, 50, 50));
+    randomScheme.setOutlineColor(HSLtoColor(hValue, 90, 35));
+    randomScheme.setArrowColor(HSLtoColor(hValue, 50, 80));
+    randomScheme.setPieceColor(HSLtoColor(hValue, 30, 55));
+    randomScheme.setBackgroundColor(HSLtoColor(hValue, 40, 40));
+    
+    return randomScheme;
 }
 
 void LoadScoreInfo()

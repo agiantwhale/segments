@@ -57,7 +57,7 @@ for hueValue in hueList:
 	colorSchemes.append( colorScheme )
 	
 data = { 'colors' : colorSchemes }
-json.dump(data, open('colors.json', 'wb'))
+json.dump(data, open('colors.json', 'wb'), sort_keys=True, indent=4, separators=(',', ': '))
 print 'Generating colors complete! Check colors.json file.'
 
 im = Image.new("RGB", (5, colorNum), "white")

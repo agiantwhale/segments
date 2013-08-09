@@ -13,7 +13,13 @@
 #include "PieceNode.h"
 #include "ArrowNode.h"
 
-RippleNode* CreateRipple(const CCPoint& globalPos)
+void GameLayer::updateRipples() {
+    for(int i = 0; i < m_sliceInfoStack.size(); i++) {
+        createRipple(m_sliceInfoStack[i].endPoint);
+    }
+}
+
+void GameLayer::createRipple(const CCPoint& globalPos)
 {
     RippleNode* singleRippleNode = RippleNode::create();
     singleRippleNode->setScale(0.f);
@@ -21,15 +27,14 @@ RippleNode* CreateRipple(const CCPoint& globalPos)
     
     CCSpawn* rippleAction = CCSpawn::create
     (
-        CCScaleTo::create(1.25, 0.5f),
-        CCRotateBy::create(0.5f, 1.5f),
+        CCScaleTo::create(1.f, 0.5f),
         CCFadeOut::create(0.5f),
         NULL
     );
     
     singleRippleNode->runAction(rippleAction);
     
-    return singleRippleNode;
+    addChild(singleRippleNode);
 }
 
 void FadePolygon(PolygonNode* polygon, const CCPoint& targetPos, float fadeTime)
@@ -155,6 +160,19 @@ bool GameLayer::initWithColorInfo(const ColorInfo& colorInfo)
     CCRepeatForever* rotation = CCRepeatForever::create(CCRotateBy::create(1.0f, (MIN_ROTATION + (MAX_ROTATION - MIN_ROTATION) * CCRANDOM_0_1())));
     m_goalPolygon->runAction(rotation);
     
+    CCRepeatForever* ripples = CCRepeatForever::create(
+                                                       CCSequence::create(
+                                                                          CCDelayTime::create(0.2f),
+                                                                          
+                                                                          CCCallFunc::create(this, callfunc_selector(GameLayer::updateRipples)
+                                                                                             ),
+                                                                          
+                                                                          NULL
+                                                                          )
+                                                       );
+    runAction(ripples);
+    
+    
     scheduleUpdate();
     
     return true;
@@ -181,8 +199,6 @@ bool GameLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
     
     if( gameScene->getLevelState() != LEVEL_LOSE )
     {
-        addChild(CreateRipple(pTouch->getStartLocation()));
-        
         SliceInfo info;
         info.touchId = pTouch->getID();
         info.beginPoint = pTouch->getStartLocation();
@@ -221,8 +237,6 @@ void GameLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
     
     GameScene* gameScene = (GameScene*)getParent();
     if(gameScene->getLevelState() != LEVEL_GAME) return;
-    
-    addChild(CreateRipple(pTouch->getLocation()));
     
     CCPoint startPoint = CCPointApplyAffineTransform( pTouch->getStartLocation(), m_slicePolygon->worldToNodeTransform());
     CCPoint endPoint = CCPointApplyAffineTransform( pTouch->getLocation(), m_slicePolygon->worldToNodeTransform());

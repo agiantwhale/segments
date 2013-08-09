@@ -12,6 +12,7 @@ ArrowNode.cpp \
 GameLayer.cpp \
 GameScene.cpp \
 Global.cpp \
+HSL2RGB.cpp \
 HudLayer.cpp \
 LoseMenuLayer.cpp \
 LoseScene.cpp \
