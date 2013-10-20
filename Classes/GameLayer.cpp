@@ -12,29 +12,37 @@
 #include "RippleNode.h"
 #include "PieceNode.h"
 #include "ArrowNode.h"
+#include <SimpleAudioEngine.h>
 
 void GameLayer::updateRipples() {
     for(int i = 0; i < m_sliceInfoStack.size(); i++) {
+        createRipple(m_sliceInfoStack[i].beginPoint);
         createRipple(m_sliceInfoStack[i].endPoint);
     }
 }
 
 void GameLayer::createRipple(const CCPoint& globalPos)
 {
-    RippleNode* singleRippleNode = RippleNode::create();
+    CCSprite* singleRippleNode = CCSprite::create("ripple.png");
     singleRippleNode->setScale(0.f);
     singleRippleNode->setPosition(globalPos);
     
     CCSpawn* rippleAction = CCSpawn::create
     (
-        CCScaleTo::create(1.f, 0.5f),
+        CCScaleTo::create(0.5f, 1.f),
         CCFadeOut::create(0.5f),
         NULL
     );
     
-    singleRippleNode->runAction(rippleAction);
+    CCSequence* rippleSequence = CCSequence::create(
+        rippleAction,
+        CCRemoveSelf::create(),
+        NULL
+    );
     
-    addChild(singleRippleNode);
+    singleRippleNode->runAction(rippleSequence);
+    
+    addChild(singleRippleNode, 2);
 }
 
 void FadePolygon(PolygonNode* polygon, const CCPoint& targetPos, float fadeTime)
@@ -147,8 +155,6 @@ bool GameLayer::initWithColorInfo(const ColorInfo& colorInfo)
         }
     }
     
-    const float MIN_ROTATION = M_PI_4 / 32;
-    const float MAX_ROTATION = M_PI_4 / 16;
     const float MIN_SCALE = 0.5f;
     const float MAX_SCALE = 0.7f;
     
@@ -157,12 +163,9 @@ bool GameLayer::initWithColorInfo(const ColorInfo& colorInfo)
     m_goalPolygon->setPosition(ccpSub(midPoint, RigCenter(goalRig)));
     m_goalPolygon->setScale( (MIN_SCALE + (MAX_SCALE - MIN_SCALE) * CCRANDOM_0_1()) );
     
-    CCRepeatForever* rotation = CCRepeatForever::create(CCRotateBy::create(1.0f, (MIN_ROTATION + (MAX_ROTATION - MIN_ROTATION) * CCRANDOM_0_1())));
-    m_goalPolygon->runAction(rotation);
-    
     CCRepeatForever* ripples = CCRepeatForever::create(
                                                        CCSequence::create(
-                                                                          CCDelayTime::create(0.2f),
+                                                                          CCDelayTime::create(0.25f),
                                                                           
                                                                           CCCallFunc::create(this, callfunc_selector(GameLayer::updateRipples)
                                                                                              ),
@@ -199,6 +202,8 @@ bool GameLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
     
     if( gameScene->getLevelState() != LEVEL_LOSE )
     {
+        CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("bell.wav");
+        
         SliceInfo info;
         info.touchId = pTouch->getID();
         info.beginPoint = pTouch->getStartLocation();
@@ -238,6 +243,8 @@ void GameLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
     GameScene* gameScene = (GameScene*)getParent();
     if(gameScene->getLevelState() != LEVEL_GAME) return;
     
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("bell.wav");
+    
     CCPoint startPoint = CCPointApplyAffineTransform( pTouch->getStartLocation(), m_slicePolygon->worldToNodeTransform());
     CCPoint endPoint = CCPointApplyAffineTransform( pTouch->getLocation(), m_slicePolygon->worldToNodeTransform());
     
@@ -248,6 +255,8 @@ void GameLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
     {
         m_scoreInfo.cuts++;
         g_rigCut--;
+        
+        CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("ding.wav");
         
         m_slicePolygon->removeFromParent();
         m_slicePolygon = NULL;

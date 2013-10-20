@@ -319,17 +319,24 @@ float RigArea(const Rig& rig)
 
 bool RigSimilar(const Rig& compare, const Rig& index, float& similarity)
 {
+    // Calculate the difference between the two rigs being compared in size.
     int difference = abs(compare.size() - index.size());
+    
+    // Threshold of comparison = the bigger one.
     int del = MAX(compare.size(), index.size());
+
     float percentage = (float)difference / (float)del;
+    
+    // The below is basically found through trial and error, when there are over 25% difference in the number of vertexes it seems displeasing to the eye.
     if( percentage > 0.25 ) return false;
 
-    //Jaccard index's overlap coefficient
-    //http://en.wikipedia.org/wiki/Overlap_coefficient
+    // Ignore the BADLY NAMED variables below - the smaller/bigger rig has nothing to do with the results.
     Rig smallerRig = compare;
     Rig biggerRig = index;
     
     /*
+    // This code has been commented out as I've updated the function so that it doesn't need to know which rig is smaller/bigger.
+     
     for(Rig::iterator curPos = biggerRig.begin();
         curPos != biggerRig.end();)
     {
@@ -350,6 +357,9 @@ bool RigSimilar(const Rig& compare, const Rig& index, float& similarity)
     }
      */
     
+    // Calculate the center of mass for the smaller rig.
+    // RigCenter basically returns the coordinate of all points added divided by the number of vertexes.
+    // Normalize the points to the center.
     const CCPoint smallerMid = RigCenter(smallerRig);
     for(int i = 0; i < smallerRig.size(); i++)
     {
@@ -362,16 +372,18 @@ bool RigSimilar(const Rig& compare, const Rig& index, float& similarity)
         biggerRig[i] = ccpSub(biggerRig[i], biggerMid);
     }
     
+    // Rig area does some matrix magic to calculate the area of the rig.
     float smallerArea = RigArea(smallerRig);
     float biggerArea = RigArea(biggerRig);
+    
+    // Scale the rig so that there wouldn't be big differences in overlaps when comparing similar points.
     float scale = sqrtf(biggerArea/smallerArea);
     for(int i = 0; i < smallerRig.size(); i++)
     {
         smallerRig[i] = ccpMult(smallerRig[i], scale);
     }
     
-    //The problem right now is that the Rig's centers are focus around the origin (0,0). That is retarded - fix this so that they will be focused around the centroid.
-    
+    // FIXFIX:: The problem right now is that the Rig's centers are focus around the origin (0,0). That is retarded - fix this so that they will be focused around the centroid.
     int nearPoints = 0;
     for(int i = 0; i < smallerRig.size(); i++)
     {
@@ -387,6 +399,7 @@ bool RigSimilar(const Rig& compare, const Rig& index, float& similarity)
         }
     }
     
+    // Double iteration to find the closest points
     Rig combination = biggerRig;
     for(int i = 0; i < smallerRig.size(); i++)
     {
@@ -395,6 +408,7 @@ bool RigSimilar(const Rig& compare, const Rig& index, float& similarity)
         
         for(int v = 0; v < combination.size(); v++)
         {
+            // The function below is a very simple function that gives a bit of tolerence for equality when comparing nearby points. This accounts for humans not having perfect eyesight.
             if(PointToleranceEquals(combination[v], curPoint))
             {
                 skip = true;
@@ -410,6 +424,7 @@ bool RigSimilar(const Rig& compare, const Rig& index, float& similarity)
     
     similarity = (float)nearPoints / combination.size();
     
+    // If the similarity is over 1, it means that the goal polygon is smaller than the comparing polygon.
     return similarity >= 0.75f && similarity <= 1.f;
 }
 

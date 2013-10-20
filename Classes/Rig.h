@@ -20,7 +20,7 @@ extern float g_rigMaxRadius;
 extern int g_rigVertexes;
 extern int g_rigCut;
 
-//Rig is a collection of polygon's vertexes.
+//Rig is a collection of points.
 typedef std::vector<CCPoint> Rig;
 
 void RigBoundingBox(const Rig& rig, CCPoint& min, CCPoint& max);
